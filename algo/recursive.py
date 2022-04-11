@@ -11,19 +11,18 @@ class Recursive(object):
 
     def next(self):
         # will return an array of current positions
+        if self.end:
+            return []
         p = []
         for i in range(len(self.inv)):
             p.append(self.inv[i][2][self.inv[i][1]])
-        if self.end:
-            return []
 
-        # try increase position by 1
-
+        # try increasing position by 1
         for i in range(len(self.inv)):
             self.inv[i][1] += 1
             if self.inv[i][1] < self.inv[i][0]:
                 break
-            if i == len(self.inv)-1:
+            if i == len(self.inv) - 1:
                 self.end = True
             self.inv[i][1]=0
 
